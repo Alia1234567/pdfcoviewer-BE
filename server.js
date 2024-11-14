@@ -5,7 +5,10 @@ const cors = require('cors')
 const app = express();
 
 app.use(cors({
-    origin: "*"
+    origin: "*",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type", "Authorization", "Access-Control-Allow-Origin"],
+    credentials: true,
 }))
 
 const server = http.createServer(app);
@@ -13,7 +16,7 @@ const io = new Server(server, {
   cors: {
     origin: '*', // Allow all origins (you can replace '*' with your specific origin)  }
     methods: ["GET", "POST"],
-    allowedHeaders: ["Content-Type"],
+    allowedHeaders: ["Content-Type", "Authorization", "Access-Control-Allow-Origin"],
     credentials: true,
 }})
 
